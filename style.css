@@ -1,0 +1,104 @@
+:root{
+  --size: 360px; /* visual 1:1 size (max) */
+  --pink: #ffd6e0;
+  --accent: #ff6b9a;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;padding:0}
+
+body{
+  background: linear-gradient(180deg,var(--pink) 0%, #ffeef6 100%);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:#222;
+}
+
+/* center stage */
+.stage{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+/* box button: square 1:1, responsive */
+.box{
+  width: min(80vw, var(--size));
+  height: min(80vw, var(--size));
+  max-width: var(--size);
+  max-height: var(--size);
+  border: none;
+  background: transparent;
+  padding:0;
+  border-radius:16px;
+  position:relative;
+  cursor:pointer;
+  outline-offset:6px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  perspective:1000px;
+  display:inline-block;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* front cover */
+.box .front{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:16px;
+  background: linear-gradient(180deg,var(--accent) 0%, #ff4d7a 100%);
+  color:white;
+  font-weight:700;
+  font-size:1.1rem;
+  transform-origin: top center;
+  transition: transform 700ms cubic-bezier(.2,.9,.2,1), opacity 300ms ease;
+  z-index:3;
+  user-select:none;
+  pointer-events:none;
+}
+
+/* inner holds picture */
+.box .inner{
+  position:absolute;
+  inset:0;
+  border-radius:16px;
+  overflow:hidden;
+  background: #fff;
+  transform-origin: center;
+  transition: transform 700ms cubic-bezier(.2,.9,.2,1), filter 400ms ease;
+  backface-visibility: hidden;
+  z-index:1;
+}
+
+/* image fill */
+.box .inner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* when open: flip front up and reveal inner */
+.box.open .front{
+  transform: rotateX(-85deg) translateY(-8%);
+  opacity:0;
+}
+
+.box.open .inner{
+  transform: scale(1.02) translateY(-4px);
+  filter: saturate(1.05);
+}
+
+/* Disabled after one click */
+.box[disabled]{ cursor: default; opacity:0.95; }
+
+/* confetti canvas */
+#confettiCanvas{
+  position:fixed;
+  left:0; top:0; width:100%; height:100%;
+  pointer-events:none;
+  z-index:9999;
+}
