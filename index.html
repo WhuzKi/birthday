@@ -1,22 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Surprise Box</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Surprise</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Surprise Box</h1>
-    <div class="box" id="box" aria-live="polite">
-      <div class="content">
-        <img id="surpriseImg" src="myphoto.jpg" alt="Surprise photo">
-      </div>
-      <div class="front">A surprise is inside</div>
-    </div>
-    <button id="openBtn" aria-controls="box" aria-expanded="false">Open Box</button>
-  </div>
+  <main class="stage">
+    <button id="surpriseBtn" class="box" aria-expanded="false" aria-label="Click me to reveal a surprise">
+      <span class="front">Click me!</span>
+      <span class="inner">
+        <img id="surpriseImg" src="myphoto.jpg" alt="Surprise photo" />
+      </span>
+    </button>
+
+    <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+    <audio id="bgMusic" src="music.mp3" preload="auto"></audio>
+  </main>
+
   <script src="script.js"></script>
 </body>
 </html>
