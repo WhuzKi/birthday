@@ -1,61 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Birthday Surprise 🎂</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Surprise Box</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-  <!-- Floating Balloons Background -->
-  <div class="balloons">
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-    <div class="balloon"></div>
-  </div>
-
-  <!-- Background Music -->
-  <audio id="bg-music" loop>
-    <source src="music.mp3" type="audio/mp3">
-  </audio>
-
   <div class="container">
-    <h1>🎉 Happy Birthday pendek! 🎂</h1>
-    <p id="message">Click the button for your surprise 👀</p>
-
-    <button onclick="showSurprise()">Click Me 💝</button>
-
-    <!-- Surprise Section -->
-    <div id="surprise" class="hidden">
-
-      <h2>🎁 Open Your Gift!</h2>
-      <p>(Click the gift box!)</p>
-
-      <div class="gift-box" onclick="openGift()">
-        <div class="lid"></div>
-        <div class="box"></div>
-        <div class="ribbon"></div>
+    <h1>Surprise Box</h1>
+    <div class="box" id="box" aria-live="polite">
+      <div class="content">
+        <img id="surpriseImg" src="myphoto.jpg" alt="Surprise photo">
       </div>
-
-      <div id="gift-content" class="gift-content hidden">
-        <h2> Surprise!!! </h2>
-        <p>Semoga apa yang dicapai tergapai dan sampai 🌸✨</p>
-        <img src="myphoto.jpg" alt="Surprise Picture">
-      </div>
-
+      <div class="front">A surprise is inside</div>
     </div>
-
+    <button id="openBtn" aria-controls="box" aria-expanded="false">Open Box</button>
   </div>
-
-  <!-- Confetti Library -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-  <!-- Your Script -->
   <script src="script.js"></script>
-
 </body>
 </html>
